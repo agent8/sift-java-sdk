@@ -15,9 +15,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import com.easilydo.sift.model.Domain;
 import com.easilydo.sift.model.Sift;
-
 
 /**
  * FoodEstablishmentReservation
@@ -69,10 +67,6 @@ public class FoodEstablishmentReservation extends Sift {
     private Date startTime;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public Domain getDomain() {
-        return Domain.RESTAURANT;
-    }
 
     /**
      * 

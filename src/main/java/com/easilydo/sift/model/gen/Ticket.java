@@ -24,19 +24,16 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
-    "ticketUrl",
-    "url",
     "ticketNumber",
     "ticketedSeat",
     "underName",
+    "ticketToken",
+    "url",
+    "ticketUrl",
     "description"
 })
 public class Ticket {
 
-    @JsonProperty("ticketUrl")
-    private String ticketUrl;
-    @JsonProperty("url")
-    private String url;
     @JsonProperty("ticketNumber")
     private String ticketNumber;
     /**
@@ -55,50 +52,16 @@ public class Ticket {
      */
     @JsonProperty("underName")
     private Person underName;
+    @JsonProperty("ticketToken")
+    private String ticketToken;
+    @JsonProperty("url")
+    private String url;
+    @JsonProperty("ticketUrl")
+    private String ticketUrl;
     @JsonProperty("description")
     private String description;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    /**
-     * 
-     * @return
-     *     The ticketUrl
-     */
-    @JsonProperty("ticketUrl")
-    public String getTicketUrl() {
-        return ticketUrl;
-    }
-
-    /**
-     * 
-     * @param ticketUrl
-     *     The ticketUrl
-     */
-    @JsonProperty("ticketUrl")
-    public void setTicketUrl(String ticketUrl) {
-        this.ticketUrl = ticketUrl;
-    }
-
-    /**
-     * 
-     * @return
-     *     The url
-     */
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-     * 
-     * @param url
-     *     The url
-     */
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     /**
      * 
@@ -175,6 +138,66 @@ public class Ticket {
     /**
      * 
      * @return
+     *     The ticketToken
+     */
+    @JsonProperty("ticketToken")
+    public String getTicketToken() {
+        return ticketToken;
+    }
+
+    /**
+     * 
+     * @param ticketToken
+     *     The ticketToken
+     */
+    @JsonProperty("ticketToken")
+    public void setTicketToken(String ticketToken) {
+        this.ticketToken = ticketToken;
+    }
+
+    /**
+     * 
+     * @return
+     *     The url
+     */
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * 
+     * @param url
+     *     The url
+     */
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ticketUrl
+     */
+    @JsonProperty("ticketUrl")
+    public String getTicketUrl() {
+        return ticketUrl;
+    }
+
+    /**
+     * 
+     * @param ticketUrl
+     *     The ticketUrl
+     */
+    @JsonProperty("ticketUrl")
+    public void setTicketUrl(String ticketUrl) {
+        this.ticketUrl = ticketUrl;
+    }
+
+    /**
+     * 
+     * @return
      *     The description
      */
     @JsonProperty("description")
@@ -209,7 +232,7 @@ public class Ticket {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(ticketUrl).append(url).append(ticketNumber).append(ticketedSeat).append(underName).append(description).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(ticketNumber).append(ticketedSeat).append(underName).append(ticketToken).append(url).append(ticketUrl).append(description).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -221,7 +244,7 @@ public class Ticket {
             return false;
         }
         Ticket rhs = ((Ticket) other);
-        return new EqualsBuilder().append(ticketUrl, rhs.ticketUrl).append(url, rhs.url).append(ticketNumber, rhs.ticketNumber).append(ticketedSeat, rhs.ticketedSeat).append(underName, rhs.underName).append(description, rhs.description).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(ticketNumber, rhs.ticketNumber).append(ticketedSeat, rhs.ticketedSeat).append(underName, rhs.underName).append(ticketToken, rhs.ticketToken).append(url, rhs.url).append(ticketUrl, rhs.ticketUrl).append(description, rhs.description).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

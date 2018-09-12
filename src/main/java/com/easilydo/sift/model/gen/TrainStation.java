@@ -25,7 +25,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
     "code",
-    "name"
+    "name",
+    "x-destination"
 })
 public class TrainStation {
 
@@ -33,6 +34,8 @@ public class TrainStation {
     private String code;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("x-destination")
+    private Boolean destination;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -76,6 +79,26 @@ public class TrainStation {
         this.name = name;
     }
 
+    /**
+     * 
+     * @return
+     *     The destination
+     */
+    @JsonProperty("x-destination")
+    public Boolean getDestination() {
+        return destination;
+    }
+
+    /**
+     * 
+     * @param destination
+     *     The destination
+     */
+    @JsonProperty("x-destination")
+    public void setDestination(Boolean destination) {
+        this.destination = destination;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -93,7 +116,7 @@ public class TrainStation {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(code).append(name).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(code).append(name).append(destination).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -105,7 +128,7 @@ public class TrainStation {
             return false;
         }
         TrainStation rhs = ((TrainStation) other);
-        return new EqualsBuilder().append(code, rhs.code).append(name, rhs.name).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(code, rhs.code).append(name, rhs.name).append(destination, rhs.destination).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

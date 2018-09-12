@@ -3,24 +3,28 @@ package com.easilydo.sift.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Domain {
-	UNKNOWN(0, "Unknown"),
-	PURCHASE(1, "Order"),
-	SHIPMENT(2, "ParcelDelivery"),
-	BILL(3, "Invoice"),
-	EVENT(4, "EventReservation"),
-	RESTAURANT(5, "FoodEstablishmentReservation"),
-	HOTEL(6, "LodgingReservation"),
-	TRAIN(7, "TrainReservation"),
-	DEAL(8, "Deal"),
-	CONTACT(9, "Contact"),
-	CAR_RENTAL(10, "RentalCarReservation"),
-	FLIGHT(11, "FlightReservation"),
-	BOARDING_PASS(12, "BoardingPass"),
-	REMINDER(13, "Reminder");
+import com.easilydo.sift.model.gen.*;
 
-	private final int id;
-	private final String name;
+public enum Domain {
+	UNKNOWN(0, "unknown", null),
+	PURCHASE(1, "purchase", Order.class),
+	SHIPMENT(2, "shipment", ParcelDelivery.class),
+	BILL(3, "bill", Invoice.class),
+	EVENT(4, "event", EventReservation.class),
+	RESTAURANT(5, "restaurant", FoodEstablishmentReservation.class),
+	HOTEL(6, "hotel", LodgingReservation.class),
+	TRAIN(7, "train", TrainReservation.class),
+	DEAL(8, "deal", Deal.class),
+	CONTACT(9, "contact", Contact.class),
+	CAR_RENTAL(10, "rentalcar", RentalCarReservation.class),
+	FLIGHT(11, "flight", FlightReservation.class),
+	BOARDING_PASS(12, "boardingpass", FlightReservation.class),
+	REMINDER(13, "reminder", Reminder.class),
+	CRUISE(14, "cruise", LodgingReservation.class);
+
+	public final int id;
+	public final String name;
+	public final Class clazz;
 	private static Map<String, Domain> constants = new HashMap<String, Domain>();
 
 	static {
@@ -29,9 +33,10 @@ public enum Domain {
 		}
 	}
 
-	Domain(int id, String name) {
+	Domain(int id, String name, Class clazz) {
 		this.id = id;
 		this.name = name;
+		this.clazz = clazz;
 	}
 
 	public static Domain getDomain(String type) {

@@ -26,6 +26,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonPropertyOrder({
     "iataCode",
     "name",
+    "x-cityName",
+    "x-destination",
     "x-rawName"
 })
 public class Airport {
@@ -34,8 +36,12 @@ public class Airport {
     private String iataCode;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("x-cityName")
+    private String cityName;
+    @JsonProperty("x-destination")
+    private Boolean destination;
     @JsonProperty("x-rawName")
-    private String xRawName;
+    private String rawName;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -82,21 +88,61 @@ public class Airport {
     /**
      * 
      * @return
-     *     The xRawName
+     *     The cityName
      */
-    @JsonProperty("x-rawName")
-    public String getXRawName() {
-        return xRawName;
+    @JsonProperty("x-cityName")
+    public String getCityName() {
+        return cityName;
     }
 
     /**
      * 
-     * @param xRawName
-     *     The x-rawName
+     * @param cityName
+     *     The cityName
+     */
+    @JsonProperty("x-cityName")
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    /**
+     * 
+     * @return
+     *     The destination
+     */
+    @JsonProperty("x-destination")
+    public Boolean getDestination() {
+        return destination;
+    }
+
+    /**
+     * 
+     * @param destination
+     *     The destination
+     */
+    @JsonProperty("x-destination")
+    public void setDestination(Boolean destination) {
+        this.destination = destination;
+    }
+
+    /**
+     * 
+     * @return
+     *     The rawName
      */
     @JsonProperty("x-rawName")
-    public void setXRawName(String xRawName) {
-        this.xRawName = xRawName;
+    public String getRawName() {
+        return rawName;
+    }
+
+    /**
+     * 
+     * @param rawName
+     *     The rawName
+     */
+    @JsonProperty("x-rawName")
+    public void setRawName(String rawName) {
+        this.rawName = rawName;
     }
 
     @Override
@@ -116,7 +162,7 @@ public class Airport {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(iataCode).append(name).append(xRawName).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(iataCode).append(name).append(cityName).append(destination).append(rawName).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -128,7 +174,7 @@ public class Airport {
             return false;
         }
         Airport rhs = ((Airport) other);
-        return new EqualsBuilder().append(iataCode, rhs.iataCode).append(name, rhs.name).append(xRawName, rhs.xRawName).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(iataCode, rhs.iataCode).append(name, rhs.name).append(cityName, rhs.cityName).append(destination, rhs.destination).append(rawName, rhs.rawName).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

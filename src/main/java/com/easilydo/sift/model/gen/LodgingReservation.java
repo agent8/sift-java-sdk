@@ -1,8 +1,10 @@
 
 package com.easilydo.sift.model.gen;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -15,9 +17,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import com.easilydo.sift.model.Domain;
 import com.easilydo.sift.model.Sift;
-
 
 /**
  * LodgingReservation
@@ -28,15 +28,30 @@ import com.easilydo.sift.model.Sift;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
+    "arrivalLocation",
+    "arrivalTime",
     "broker",
-    "checkinTime",
-    "checkoutTime",
+    "departLocation",
+    "departureTime",
     "reservationFor",
     "reservationId",
-    "reservationStatus"
+    "reservationStatus",
+    "reservedTicket",
+    "checkinTime",
+    "checkoutTime"
 })
 public class LodgingReservation extends Sift {
 
+    /**
+     * Place
+     * <p>
+     * 
+     * 
+     */
+    @JsonProperty("arrivalLocation")
+    private Place arrivalLocation;
+    @JsonProperty("arrivalTime")
+    private Date arrivalTime;
     /**
      * Organization
      * <p>
@@ -45,10 +60,16 @@ public class LodgingReservation extends Sift {
      */
     @JsonProperty("broker")
     private Organization broker;
-    @JsonProperty("checkinTime")
-    private Date checkinTime;
-    @JsonProperty("checkoutTime")
-    private Date checkoutTime;
+    /**
+     * Place
+     * <p>
+     * 
+     * 
+     */
+    @JsonProperty("departLocation")
+    private Place departLocation;
+    @JsonProperty("departureTime")
+    private Date departureTime;
     /**
      * LodgingBusiness
      * <p>
@@ -67,11 +88,59 @@ public class LodgingReservation extends Sift {
      */
     @JsonProperty("reservationStatus")
     private ReservationStatus reservationStatus;
+    @JsonProperty("reservedTicket")
+    private List<Ticket> reservedTicket = new ArrayList<Ticket>();
+    @JsonProperty("checkinTime")
+    private Date checkinTime;
+    @JsonProperty("checkoutTime")
+    private Date checkoutTime;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Domain getDomain() {
-        return Domain.HOTEL;
+    /**
+     * Place
+     * <p>
+     * 
+     * 
+     * @return
+     *     The arrivalLocation
+     */
+    @JsonProperty("arrivalLocation")
+    public Place getArrivalLocation() {
+        return arrivalLocation;
+    }
+
+    /**
+     * Place
+     * <p>
+     * 
+     * 
+     * @param arrivalLocation
+     *     The arrivalLocation
+     */
+    @JsonProperty("arrivalLocation")
+    public void setArrivalLocation(Place arrivalLocation) {
+        this.arrivalLocation = arrivalLocation;
+    }
+
+    /**
+     * 
+     * @return
+     *     The arrivalTime
+     */
+    @JsonProperty("arrivalTime")
+    public Date getArrivalTime() {
+        return arrivalTime;
+    }
+
+    /**
+     * 
+     * @param arrivalTime
+     *     The arrivalTime
+     */
+    @JsonProperty("arrivalTime")
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     /**
@@ -101,43 +170,49 @@ public class LodgingReservation extends Sift {
     }
 
     /**
+     * Place
+     * <p>
+     * 
      * 
      * @return
-     *     The checkinTime
+     *     The departLocation
      */
-    @JsonProperty("checkinTime")
-    public Date getCheckinTime() {
-        return checkinTime;
+    @JsonProperty("departLocation")
+    public Place getDepartLocation() {
+        return departLocation;
     }
 
     /**
+     * Place
+     * <p>
      * 
-     * @param checkinTime
-     *     The checkinTime
+     * 
+     * @param departLocation
+     *     The departLocation
      */
-    @JsonProperty("checkinTime")
-    public void setCheckinTime(Date checkinTime) {
-        this.checkinTime = checkinTime;
+    @JsonProperty("departLocation")
+    public void setDepartLocation(Place departLocation) {
+        this.departLocation = departLocation;
     }
 
     /**
      * 
      * @return
-     *     The checkoutTime
+     *     The departureTime
      */
-    @JsonProperty("checkoutTime")
-    public Date getCheckoutTime() {
-        return checkoutTime;
+    @JsonProperty("departureTime")
+    public Date getDepartureTime() {
+        return departureTime;
     }
 
     /**
      * 
-     * @param checkoutTime
-     *     The checkoutTime
+     * @param departureTime
+     *     The departureTime
      */
-    @JsonProperty("checkoutTime")
-    public void setCheckoutTime(Date checkoutTime) {
-        this.checkoutTime = checkoutTime;
+    @JsonProperty("departureTime")
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
     }
 
     /**
@@ -212,6 +287,66 @@ public class LodgingReservation extends Sift {
         this.reservationStatus = reservationStatus;
     }
 
+    /**
+     * 
+     * @return
+     *     The reservedTicket
+     */
+    @JsonProperty("reservedTicket")
+    public List<Ticket> getReservedTicket() {
+        return reservedTicket;
+    }
+
+    /**
+     * 
+     * @param reservedTicket
+     *     The reservedTicket
+     */
+    @JsonProperty("reservedTicket")
+    public void setReservedTicket(List<Ticket> reservedTicket) {
+        this.reservedTicket = reservedTicket;
+    }
+
+    /**
+     * 
+     * @return
+     *     The checkinTime
+     */
+    @JsonProperty("checkinTime")
+    public Date getCheckinTime() {
+        return checkinTime;
+    }
+
+    /**
+     * 
+     * @param checkinTime
+     *     The checkinTime
+     */
+    @JsonProperty("checkinTime")
+    public void setCheckinTime(Date checkinTime) {
+        this.checkinTime = checkinTime;
+    }
+
+    /**
+     * 
+     * @return
+     *     The checkoutTime
+     */
+    @JsonProperty("checkoutTime")
+    public Date getCheckoutTime() {
+        return checkoutTime;
+    }
+
+    /**
+     * 
+     * @param checkoutTime
+     *     The checkoutTime
+     */
+    @JsonProperty("checkoutTime")
+    public void setCheckoutTime(Date checkoutTime) {
+        this.checkoutTime = checkoutTime;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -229,7 +364,7 @@ public class LodgingReservation extends Sift {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(broker).append(checkinTime).append(checkoutTime).append(reservationFor).append(reservationId).append(reservationStatus).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(arrivalLocation).append(arrivalTime).append(broker).append(departLocation).append(departureTime).append(reservationFor).append(reservationId).append(reservationStatus).append(reservedTicket).append(checkinTime).append(checkoutTime).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -241,7 +376,7 @@ public class LodgingReservation extends Sift {
             return false;
         }
         LodgingReservation rhs = ((LodgingReservation) other);
-        return new EqualsBuilder().append(broker, rhs.broker).append(checkinTime, rhs.checkinTime).append(checkoutTime, rhs.checkoutTime).append(reservationFor, rhs.reservationFor).append(reservationId, rhs.reservationId).append(reservationStatus, rhs.reservationStatus).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(arrivalLocation, rhs.arrivalLocation).append(arrivalTime, rhs.arrivalTime).append(broker, rhs.broker).append(departLocation, rhs.departLocation).append(departureTime, rhs.departureTime).append(reservationFor, rhs.reservationFor).append(reservationId, rhs.reservationId).append(reservationStatus, rhs.reservationStatus).append(reservedTicket, rhs.reservedTicket).append(checkinTime, rhs.checkinTime).append(checkoutTime, rhs.checkoutTime).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

@@ -3,6 +3,9 @@ package com.easilydo.sift.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum ShipmentStatus {
 	DELIVERED("http://schema.org/OrderDelivered"),
 	IN_TRANSIT("http://schema.org/OrderInTransit"),
@@ -21,7 +24,14 @@ public enum ShipmentStatus {
 		this.name = name;
 	}
 
+	@JsonCreator
 	public static ShipmentStatus getShipmentStatus(String type) {
 		return constants.get(type);
 	}
+
+	@JsonValue
+	@Override
+	public String toString() {
+        	return this.name;
+    	}
 }

@@ -29,6 +29,8 @@ public class Connection {
 	private EmailType emailType;
     	@JsonProperty("state")
 	private ConnState state;
+    	@JsonProperty("host")
+	private String host;
 
 	public long getConnId() {
 		return connId;
@@ -60,6 +62,14 @@ public class Connection {
 
 	public void setConnState(ConnState state) {
 		this.state = state;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
 	}
 
 	@Override

@@ -16,9 +16,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import com.easilydo.sift.model.Domain;
 import com.easilydo.sift.model.Sift;
-
 
 /**
  * EventReservation
@@ -55,10 +53,6 @@ public class EventReservation extends Sift {
     private List<Ticket> reservedTicket = new ArrayList<Ticket>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public Domain getDomain() {
-        return Domain.EVENT;
-    }
 
     /**
      * Organization

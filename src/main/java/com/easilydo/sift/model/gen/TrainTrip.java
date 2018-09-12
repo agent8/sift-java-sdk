@@ -26,6 +26,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
     "arrivalStation",
+    "arrivalTime",
     "departureStation",
     "departureTime",
     "description",
@@ -41,6 +42,8 @@ public class TrainTrip {
      */
     @JsonProperty("arrivalStation")
     private TrainStation arrivalStation;
+    @JsonProperty("arrivalTime")
+    private Date arrivalTime;
     /**
      * TrainStation
      * <p>
@@ -82,6 +85,26 @@ public class TrainTrip {
     @JsonProperty("arrivalStation")
     public void setArrivalStation(TrainStation arrivalStation) {
         this.arrivalStation = arrivalStation;
+    }
+
+    /**
+     * 
+     * @return
+     *     The arrivalTime
+     */
+    @JsonProperty("arrivalTime")
+    public Date getArrivalTime() {
+        return arrivalTime;
+    }
+
+    /**
+     * 
+     * @param arrivalTime
+     *     The arrivalTime
+     */
+    @JsonProperty("arrivalTime")
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     /**
@@ -187,7 +210,7 @@ public class TrainTrip {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(arrivalStation).append(departureStation).append(departureTime).append(description).append(trainNumber).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(arrivalStation).append(arrivalTime).append(departureStation).append(departureTime).append(description).append(trainNumber).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -199,7 +222,7 @@ public class TrainTrip {
             return false;
         }
         TrainTrip rhs = ((TrainTrip) other);
-        return new EqualsBuilder().append(arrivalStation, rhs.arrivalStation).append(departureStation, rhs.departureStation).append(departureTime, rhs.departureTime).append(description, rhs.description).append(trainNumber, rhs.trainNumber).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(arrivalStation, rhs.arrivalStation).append(arrivalTime, rhs.arrivalTime).append(departureStation, rhs.departureStation).append(departureTime, rhs.departureTime).append(description, rhs.description).append(trainNumber, rhs.trainNumber).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

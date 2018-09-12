@@ -1,9 +1,7 @@
 
 package com.easilydo.sift.model.gen;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -19,7 +17,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import com.easilydo.sift.model.Sift;
 
 /**
- * Contact
+ * Reminder
  * <p>
  * 
  * 
@@ -27,33 +25,33 @@ import com.easilydo.sift.model.Sift;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
-    "contacts"
+    "isReminder"
 })
-public class Contact extends Sift {
+public class Reminder extends Sift {
 
-    @JsonProperty("contacts")
-    private List<Person> contacts = new ArrayList<Person>();
+    @JsonProperty("isReminder")
+    private Boolean isReminder;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The contacts
+     *     The isReminder
      */
-    @JsonProperty("contacts")
-    public List<Person> getContacts() {
-        return contacts;
+    @JsonProperty("isReminder")
+    public Boolean getIsReminder() {
+        return isReminder;
     }
 
     /**
      * 
-     * @param contacts
-     *     The contacts
+     * @param isReminder
+     *     The isReminder
      */
-    @JsonProperty("contacts")
-    public void setContacts(List<Person> contacts) {
-        this.contacts = contacts;
+    @JsonProperty("isReminder")
+    public void setIsReminder(Boolean isReminder) {
+        this.isReminder = isReminder;
     }
 
     @Override
@@ -73,7 +71,7 @@ public class Contact extends Sift {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(contacts).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(isReminder).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -81,11 +79,11 @@ public class Contact extends Sift {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Contact) == false) {
+        if ((other instanceof Reminder) == false) {
             return false;
         }
-        Contact rhs = ((Contact) other);
-        return new EqualsBuilder().append(contacts, rhs.contacts).append(additionalProperties, rhs.additionalProperties).isEquals();
+        Reminder rhs = ((Reminder) other);
+        return new EqualsBuilder().append(isReminder, rhs.isReminder).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

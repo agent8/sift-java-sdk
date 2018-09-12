@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +38,7 @@ import com.easilydo.sift.model.ShipmentStatus;
  * Primary class in the Sift Java SDK; used for interacting with the sift server.
  * After constructing an instance of the class with their api and secret keys,
  * the sift developer can make sift api calls by invoking the corresponding method.
- * All apis in the <a href="https://developer.easilydo.com/sift/documentation">Sift API docs</a>
+ * All apis in the <a href="https://developer.edison.tech/sift/documentation">Sift API docs</a>
  * are implemented, with the exception of the Connect Tokens and Connect Emails, which are intended
  * for a front end web flow.
  * <p>
@@ -71,7 +72,7 @@ public class ApiManager {
 	* @return 	list of sifts in descending order of last update time
 	*/
 	public List<Sift> listSifts(String username) {
-		return listSifts(username, null, null, null);
+		return listSifts(username, null, null, null, null);
 	}
 
 	/**
@@ -81,7 +82,7 @@ public class ApiManager {
 	* @return 	list of sifts in descending order of last update time
 	*/
 	public List<Sift> listSifts(String username, Date lastUpdateTime) {
-		return listSifts(username, lastUpdateTime, null, null);
+		return listSifts(username, lastUpdateTime, null, null, null);
 	}
 
 	/**
@@ -93,6 +94,21 @@ public class ApiManager {
 	* @return 	list of sifts in descending order of last update time
 	*/
 	public List<Sift> listSifts(String username, Date lastUpdateTime, Integer offset, Integer limit) {
+		return listSifts(username, lastUpdateTime, offset, limit, null);
+	}
+
+
+	/**
+	* Get a list of sifts for the given user since a certain date
+	* @param username	username of the user to fetch sifts for
+	* @param lastUpdateTime	only return sifts updated since this date
+	* @param offset	used for paging, where to start
+	* @param limit	maximum number of results to return
+	* @param domains if included, only sifts from the specified domain will be returned	
+	* @return 	list of sifts in descending order of last update time
+	*/
+
+	public List<Sift> listSifts(String username, Date lastUpdateTime, Integer offset, Integer limit, Collection<Domain> domains) {
 		List<Sift> sifts = new ArrayList<Sift>();
 		String path = String.format("/v1/users/%s/sifts", username);
 
@@ -108,6 +124,18 @@ public class ApiManager {
 
 		if(limit != null) {
 			params.put("limit", limit);
+		}
+
+		if(domains != null && !domains.isEmpty()) {
+			StringBuilder list = new StringBuilder();
+			for(Domain domain: domains) {
+				list.append(domain.name);
+				list.append(",");
+			}
+
+			list.deleteCharAt(list.length() - 1);
+
+			params.put("domains", list.toString());
 		}
 
 		addCommonParams("GET", path, params);
@@ -128,11 +156,25 @@ public class ApiManager {
 	* @return 	the sift corresponding to the provided id
 	*/
 	public Sift getSift(String username, long siftId) {
+		return getSift(username, siftId, false);
+	}
+
+	/**
+	* Get a particular sift
+	* @param username	username of the user to fetch sifts for
+	* @param siftId	numeric id of the sift to be fetched
+	* @param includeEml	boolean indicating if mime body should be returned
+	* @return 	the sift corresponding to the provided id
+	*/
+	public Sift getSift(String username, long siftId, boolean includeEml) {
 		String path = String.format("/v1/users/%s/sifts/%d", username, siftId);
 
 		Map<String,Object> params = new HashMap<String,Object>();
 
-		//TODO: add include_eml handling
+		if(includeEml) {
+			params.put("include_eml", 1);
+		}
+
 		addCommonParams("GET", path, params);
 
 		JsonNode result = executeRequest(Unirest.get(API_ENDPOINT + path).queryString(params));
@@ -166,13 +208,15 @@ public class ApiManager {
 	/**
 	* Register a new user
 	* @param username	username of the new user
+	* @param locale	locale of the new user
 	* @return 	the numeric user id of the newly created user
 	*/
-	public long addUser(String username) {
+	public long addUser(String username, String locale) {
 		String path = "/v1/users";
 
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("username", username);
+		params.put("locale", locale);
 
 		addCommonParams("POST", path, params);
 
@@ -196,10 +240,10 @@ public class ApiManager {
 	/**
 	* List a user's email connections
 	* @param username	username of the new user 
-	* @return 	the list of the user's connsctions
+	* @return 	the list of the user's connections
 	*/
 	public List<Connection> listConnections(String username) {
-		return listConnections(username, null, null);
+		return listConnections(username, null, null, false);
 	}
 
 	/**
@@ -207,9 +251,21 @@ public class ApiManager {
 	* @param username	username of the user whose connections are to be fetched
 	* @param offset	used for paging, where to start
 	* @param limit	maximum number of results to return
-	* @return 	the list of the user's connsctions
+	* @return 	the list of the user's connections
 	*/
 	public List<Connection> listConnections(String username, Integer offset, Integer limit) {
+		return listConnections(username, null, null, false);
+	}
+
+	/**
+	* List a user's email connections
+	* @param username	username of the user whose connections are to be fetched
+	* @param offset	used for paging, where to start
+	* @param limit	maximum number of results to return
+	* @param includeInvalid	if true, returns invalid connections. Default is false
+	* @return 	the list of the user's connections
+	*/
+	public List<Connection> listConnections(String username, Integer offset, Integer limit, boolean includeInvalid) {
 		List<Connection> conns = new ArrayList<Connection>();
 		String path = String.format("/v1/users/%s/email_connections", username);
 
@@ -221,6 +277,10 @@ public class ApiManager {
 
 		if(limit != null) {
 			params.put("limit", limit);
+		}
+
+		if(includeInvalid) {
+			params.put("include_invalid", 1);
 		}
 
 		addCommonParams("GET", path, params);
@@ -331,7 +391,7 @@ public class ApiManager {
 
 		Map<String,Object> params = new HashMap<String,Object>(credentials);
 		params.put("account_type", type.toString());
-		//params.put("account", account);
+		params.put("account", account);
 
 		addCommonParams("POST", path, params);
 
@@ -496,7 +556,6 @@ public class ApiManager {
 
 	public static void main(String[] args) {
 		ApiManager apiMan = new ApiManager(args[0], args[1]);
-
 		List<Sift> sifts = apiMan.discovery(new File(args[2]));
 
 		for(Sift sift: sifts) {

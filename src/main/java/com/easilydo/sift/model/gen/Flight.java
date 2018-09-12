@@ -25,15 +25,21 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
+    "aircraft",
     "arrivalAirport",
+    "arrivalTerminal",
     "arrivalTime",
     "departureAirport",
+    "departureTerminal",
     "departureTime",
     "flightNumber",
-    "seller"
+    "seller",
+    "departureGate"
 })
 public class Flight {
 
+    @JsonProperty("aircraft")
+    private String aircraft;
     /**
      * Airport
      * <p>
@@ -42,6 +48,8 @@ public class Flight {
      */
     @JsonProperty("arrivalAirport")
     private Airport arrivalAirport;
+    @JsonProperty("arrivalTerminal")
+    private String arrivalTerminal;
     @JsonProperty("arrivalTime")
     private Date arrivalTime;
     /**
@@ -52,6 +60,8 @@ public class Flight {
      */
     @JsonProperty("departureAirport")
     private Airport departureAirport;
+    @JsonProperty("departureTerminal")
+    private String departureTerminal;
     @JsonProperty("departureTime")
     private Date departureTime;
     @JsonProperty("flightNumber")
@@ -64,8 +74,30 @@ public class Flight {
      */
     @JsonProperty("seller")
     private Airline seller;
+    @JsonProperty("departureGate")
+    private String departureGate;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * 
+     * @return
+     *     The aircraft
+     */
+    @JsonProperty("aircraft")
+    public String getAircraft() {
+        return aircraft;
+    }
+
+    /**
+     * 
+     * @param aircraft
+     *     The aircraft
+     */
+    @JsonProperty("aircraft")
+    public void setAircraft(String aircraft) {
+        this.aircraft = aircraft;
+    }
 
     /**
      * Airport
@@ -91,6 +123,26 @@ public class Flight {
     @JsonProperty("arrivalAirport")
     public void setArrivalAirport(Airport arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
+    }
+
+    /**
+     * 
+     * @return
+     *     The arrivalTerminal
+     */
+    @JsonProperty("arrivalTerminal")
+    public String getArrivalTerminal() {
+        return arrivalTerminal;
+    }
+
+    /**
+     * 
+     * @param arrivalTerminal
+     *     The arrivalTerminal
+     */
+    @JsonProperty("arrivalTerminal")
+    public void setArrivalTerminal(String arrivalTerminal) {
+        this.arrivalTerminal = arrivalTerminal;
     }
 
     /**
@@ -137,6 +189,26 @@ public class Flight {
     @JsonProperty("departureAirport")
     public void setDepartureAirport(Airport departureAirport) {
         this.departureAirport = departureAirport;
+    }
+
+    /**
+     * 
+     * @return
+     *     The departureTerminal
+     */
+    @JsonProperty("departureTerminal")
+    public String getDepartureTerminal() {
+        return departureTerminal;
+    }
+
+    /**
+     * 
+     * @param departureTerminal
+     *     The departureTerminal
+     */
+    @JsonProperty("departureTerminal")
+    public void setDepartureTerminal(String departureTerminal) {
+        this.departureTerminal = departureTerminal;
     }
 
     /**
@@ -205,6 +277,26 @@ public class Flight {
         this.seller = seller;
     }
 
+    /**
+     * 
+     * @return
+     *     The departureGate
+     */
+    @JsonProperty("departureGate")
+    public String getDepartureGate() {
+        return departureGate;
+    }
+
+    /**
+     * 
+     * @param departureGate
+     *     The departureGate
+     */
+    @JsonProperty("departureGate")
+    public void setDepartureGate(String departureGate) {
+        this.departureGate = departureGate;
+    }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -222,7 +314,7 @@ public class Flight {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(arrivalAirport).append(arrivalTime).append(departureAirport).append(departureTime).append(flightNumber).append(seller).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(aircraft).append(arrivalAirport).append(arrivalTerminal).append(arrivalTime).append(departureAirport).append(departureTerminal).append(departureTime).append(flightNumber).append(seller).append(departureGate).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -234,7 +326,7 @@ public class Flight {
             return false;
         }
         Flight rhs = ((Flight) other);
-        return new EqualsBuilder().append(arrivalAirport, rhs.arrivalAirport).append(arrivalTime, rhs.arrivalTime).append(departureAirport, rhs.departureAirport).append(departureTime, rhs.departureTime).append(flightNumber, rhs.flightNumber).append(seller, rhs.seller).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(aircraft, rhs.aircraft).append(arrivalAirport, rhs.arrivalAirport).append(arrivalTerminal, rhs.arrivalTerminal).append(arrivalTime, rhs.arrivalTime).append(departureAirport, rhs.departureAirport).append(departureTerminal, rhs.departureTerminal).append(departureTime, rhs.departureTime).append(flightNumber, rhs.flightNumber).append(seller, rhs.seller).append(departureGate, rhs.departureGate).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

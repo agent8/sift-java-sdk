@@ -24,42 +24,66 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
-    "address",
+    "description",
     "name",
+    "x-category",
+    "x-days",
+    "x-deck",
+    "x-ship",
+    "x-stateroom",
+    "address",
     "telephone",
-    "x-days"
+    "x-rewardsLevel",
+    "x-roomType",
+    "x-rooms"
 })
 public class LodgingBusiness {
 
-    @JsonProperty("address")
-    private String address;
+    @JsonProperty("description")
+    private String description;
     @JsonProperty("name")
     private String name;
+    @JsonProperty("x-category")
+    private String category;
+    @JsonProperty("x-days")
+    private String days;
+    @JsonProperty("x-deck")
+    private String deck;
+    @JsonProperty("x-ship")
+    private String ship;
+    @JsonProperty("x-stateroom")
+    private String stateroom;
+    @JsonProperty("address")
+    private String address;
     @JsonProperty("telephone")
     private String telephone;
-    @JsonProperty("x-days")
-    private Double xDays;
+    @JsonProperty("x-rewardsLevel")
+    private String rewardsLevel;
+    @JsonProperty("x-roomType")
+    private String roomType;
+    @JsonProperty("x-rooms")
+    private String rooms;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The address
+     *     The description
      */
-    @JsonProperty("address")
-    public String getAddress() {
-        return address;
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
     }
 
     /**
      * 
-     * @param address
-     *     The address
+     * @param description
+     *     The description
      */
-    @JsonProperty("address")
-    public void setAddress(String address) {
-        this.address = address;
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -85,6 +109,126 @@ public class LodgingBusiness {
     /**
      * 
      * @return
+     *     The category
+     */
+    @JsonProperty("x-category")
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * 
+     * @param category
+     *     The category
+     */
+    @JsonProperty("x-category")
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * 
+     * @return
+     *     The days
+     */
+    @JsonProperty("x-days")
+    public String getDays() {
+        return days;
+    }
+
+    /**
+     * 
+     * @param days
+     *     The days
+     */
+    @JsonProperty("x-days")
+    public void setDays(String days) {
+        this.days = days;
+    }
+
+    /**
+     * 
+     * @return
+     *     The deck
+     */
+    @JsonProperty("x-deck")
+    public String getDeck() {
+        return deck;
+    }
+
+    /**
+     * 
+     * @param deck
+     *     The deck
+     */
+    @JsonProperty("x-deck")
+    public void setDeck(String deck) {
+        this.deck = deck;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ship
+     */
+    @JsonProperty("x-ship")
+    public String getShip() {
+        return ship;
+    }
+
+    /**
+     * 
+     * @param ship
+     *     The ship
+     */
+    @JsonProperty("x-ship")
+    public void setShip(String ship) {
+        this.ship = ship;
+    }
+
+    /**
+     * 
+     * @return
+     *     The stateroom
+     */
+    @JsonProperty("x-stateroom")
+    public String getStateroom() {
+        return stateroom;
+    }
+
+    /**
+     * 
+     * @param stateroom
+     *     The stateroom
+     */
+    @JsonProperty("x-stateroom")
+    public void setStateroom(String stateroom) {
+        this.stateroom = stateroom;
+    }
+
+    /**
+     * 
+     * @return
+     *     The address
+     */
+    @JsonProperty("address")
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 
+     * @param address
+     *     The address
+     */
+    @JsonProperty("address")
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * 
+     * @return
      *     The telephone
      */
     @JsonProperty("telephone")
@@ -105,21 +249,61 @@ public class LodgingBusiness {
     /**
      * 
      * @return
-     *     The xDays
+     *     The rewardsLevel
      */
-    @JsonProperty("x-days")
-    public Double getXDays() {
-        return xDays;
+    @JsonProperty("x-rewardsLevel")
+    public String getRewardsLevel() {
+        return rewardsLevel;
     }
 
     /**
      * 
-     * @param xDays
-     *     The x-days
+     * @param rewardsLevel
+     *     The rewardsLevel
      */
-    @JsonProperty("x-days")
-    public void setXDays(Double xDays) {
-        this.xDays = xDays;
+    @JsonProperty("x-rewardsLevel")
+    public void setRewardsLevel(String rewardsLevel) {
+        this.rewardsLevel = rewardsLevel;
+    }
+
+    /**
+     * 
+     * @return
+     *     The roomType
+     */
+    @JsonProperty("x-roomType")
+    public String getRoomType() {
+        return roomType;
+    }
+
+    /**
+     * 
+     * @param roomType
+     *     The roomType
+     */
+    @JsonProperty("x-roomType")
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    /**
+     * 
+     * @return
+     *     The rooms
+     */
+    @JsonProperty("x-rooms")
+    public String getRooms() {
+        return rooms;
+    }
+
+    /**
+     * 
+     * @param rooms
+     *     The rooms
+     */
+    @JsonProperty("x-rooms")
+    public void setRooms(String rooms) {
+        this.rooms = rooms;
     }
 
     @Override
@@ -139,7 +323,7 @@ public class LodgingBusiness {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(address).append(name).append(telephone).append(xDays).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(description).append(name).append(category).append(days).append(deck).append(ship).append(stateroom).append(address).append(telephone).append(rewardsLevel).append(roomType).append(rooms).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -151,7 +335,7 @@ public class LodgingBusiness {
             return false;
         }
         LodgingBusiness rhs = ((LodgingBusiness) other);
-        return new EqualsBuilder().append(address, rhs.address).append(name, rhs.name).append(telephone, rhs.telephone).append(xDays, rhs.xDays).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(description, rhs.description).append(name, rhs.name).append(category, rhs.category).append(days, rhs.days).append(deck, rhs.deck).append(ship, rhs.ship).append(stateroom, rhs.stateroom).append(address, rhs.address).append(telephone, rhs.telephone).append(rewardsLevel, rhs.rewardsLevel).append(roomType, rhs.roomType).append(rooms, rhs.rooms).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

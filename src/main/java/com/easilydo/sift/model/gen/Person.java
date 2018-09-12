@@ -24,19 +24,24 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
+    "name",
+    "ticketNumber",
     "email",
     "familyName",
     "faxNumber",
     "givenName",
     "homeLocation",
     "jobTitle",
-    "name",
     "telephone",
     "workLocation",
     "worksFor"
 })
 public class Person {
 
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("ticketNumber")
+    private String ticketNumber;
     @JsonProperty("email")
     private String email;
     @JsonProperty("familyName")
@@ -55,8 +60,6 @@ public class Person {
     private ContactPoint homeLocation;
     @JsonProperty("jobTitle")
     private String jobTitle;
-    @JsonProperty("name")
-    private String name;
     @JsonProperty("telephone")
     private String telephone;
     /**
@@ -77,6 +80,46 @@ public class Person {
     private Organization worksFor;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * 
+     * @return
+     *     The name
+     */
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 
+     * @param name
+     *     The name
+     */
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ticketNumber
+     */
+    @JsonProperty("ticketNumber")
+    public String getTicketNumber() {
+        return ticketNumber;
+    }
+
+    /**
+     * 
+     * @param ticketNumber
+     *     The ticketNumber
+     */
+    @JsonProperty("ticketNumber")
+    public void setTicketNumber(String ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
 
     /**
      * 
@@ -207,26 +250,6 @@ public class Person {
     /**
      * 
      * @return
-     *     The name
-     */
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * 
-     * @param name
-     *     The name
-     */
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * 
-     * @return
      *     The telephone
      */
     @JsonProperty("telephone")
@@ -313,7 +336,7 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(email).append(familyName).append(faxNumber).append(givenName).append(homeLocation).append(jobTitle).append(name).append(telephone).append(workLocation).append(worksFor).append(additionalProperties).toHashCode();
+        return new HashCodeBuilder().append(name).append(ticketNumber).append(email).append(familyName).append(faxNumber).append(givenName).append(homeLocation).append(jobTitle).append(telephone).append(workLocation).append(worksFor).append(additionalProperties).toHashCode();
     }
 
     @Override
@@ -325,7 +348,7 @@ public class Person {
             return false;
         }
         Person rhs = ((Person) other);
-        return new EqualsBuilder().append(email, rhs.email).append(familyName, rhs.familyName).append(faxNumber, rhs.faxNumber).append(givenName, rhs.givenName).append(homeLocation, rhs.homeLocation).append(jobTitle, rhs.jobTitle).append(name, rhs.name).append(telephone, rhs.telephone).append(workLocation, rhs.workLocation).append(worksFor, rhs.worksFor).append(additionalProperties, rhs.additionalProperties).isEquals();
+        return new EqualsBuilder().append(name, rhs.name).append(ticketNumber, rhs.ticketNumber).append(email, rhs.email).append(familyName, rhs.familyName).append(faxNumber, rhs.faxNumber).append(givenName, rhs.givenName).append(homeLocation, rhs.homeLocation).append(jobTitle, rhs.jobTitle).append(telephone, rhs.telephone).append(workLocation, rhs.workLocation).append(worksFor, rhs.worksFor).append(additionalProperties, rhs.additionalProperties).isEquals();
     }
 
 }

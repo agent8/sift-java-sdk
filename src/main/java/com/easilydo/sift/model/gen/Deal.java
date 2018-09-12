@@ -14,9 +14,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import com.easilydo.sift.model.Domain;
 import com.easilydo.sift.model.Sift;
-
 
 /**
  * Deal
@@ -35,10 +33,6 @@ public class Deal extends Sift {
     private Boolean isDeal;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public Domain getDomain() {
-        return Domain.DEAL;
-    }
 
     /**
      * 
